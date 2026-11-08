@@ -155,3 +155,334 @@
   padding: 0.15rem 0.55rem;
   font-size: 0.72rem;
 }
+
+/* Fields & cards */
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.field input {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.field.compact {
+  margin-bottom: 0;
+}
+
+.field.compact input {
+  padding: 0.4rem 0.55rem;
+  font-size: 0.9rem;
+}
+
+.hint {
+  color: #888;
+  font-size: 0.82rem;
+  margin: 0.25rem 0 0.75rem;
+}
+
+/* Allergies */
+.allergy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.allergy-option {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.allergy-option:has(input:checked) {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+/* Menu item actions */
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.item-header h3 {
+  margin: 0;
+}
+
+.item-actions {
+  display: flex;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  font-size: 1.05rem;
+  cursor: pointer;
+  padding: 0.2rem 0.45rem;
+  border-radius: 8px;
+  color: #94a3b8;
+}
+
+.icon-button:hover {
+  background: #f1f5f9;
+}
+
+.icon-button.active {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.icon-button.favorite-active {
+  color: #dc2626;
+}
+
+.item-restaurant {
+  margin: 0.15rem 0 0.5rem;
+  font-size: 0.8rem;
+  color: #1f6f43;
+  font-weight: 600;
+}
+
+/* Filters */
+.filter-bar {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.filter-toggles {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.subsection-title {
+  font-size: 0.95rem;
+  color: #1f6f43;
+  margin: 1rem 0 0.5rem;
+}
+
+.recommended-section {
+  margin-bottom: 0.5rem;
+}
+
+/* Compare */
+.compare-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.compare-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+.compare-table th,
+.compare-table td {
+  border: 1px solid #e2e8f0;
+  padding: 0.55rem 0.6rem;
+  text-align: center;
+  vertical-align: top;
+}
+
+.compare-table th {
+  background: #f8fafc;
+  min-width: 90px;
+}
+
+.compare-dish-name {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.compare-restaurant {
+  font-size: 0.72rem;
+  color: #888;
+  margin: 0.15rem 0 0.3rem;
+}
+
+.compare-label {
+  text-align: left;
+  font-weight: 600;
+  color: #444;
+  white-space: nowrap;
+}
+
+.compare-best {
+  background: #dcfce7;
+  font-weight: 700;
+  color: #14532d;
+}
+
+.compare-allergens {
+  font-size: 0.75rem;
+  color: #b91c1c;
+}
+
+/* Favorites */
+.favorite-wrap {
+  margin-bottom: 0.75rem;
+}
+
+.favorite-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: -0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #1f6f43;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0.2rem 0;
+}
+
+.link-button.danger {
+  color: #b91c1c;
+}
+
+/* Buttons */
+.secondary-button {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 0.75rem;
+}
+
+.compare-bar {
+  position: fixed;
+  bottom: 4.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f6f43;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Tab bar */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+  padding: 0.4rem 0 calc(0.4rem + env(safe-area-inset-bottom));
+  z-index: 20;
+}
+
+.tab-button {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 0.55rem 0;
+  font-size: 0.82rem;
+  color: #64748b;
+  cursor: pointer;
+  position: relative;
+}
+
+.tab-button.active {
+  color: #1f6f43;
+  font-weight: 700;
+}
+
+.tab-badge {
+  position: absolute;
+  top: 0.15rem;
+  right: calc(50% - 1.6rem);
+  background: #dc2626;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  min-width: 1rem;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  padding: 0 0.2rem;
+}
+
+.app {
+  padding-bottom: 5rem;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #14532d;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  z-index: 30;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

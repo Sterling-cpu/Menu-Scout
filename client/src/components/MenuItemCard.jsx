@@ -1,25 +1,62 @@
-function NutritionBadge({ label, value, unit }) {
-  if (value == null) return null
-  return (
-    <span className="nutrition-badge">
-      <strong>{value}</strong>
-      <span className="nutrition-unit">{unit}</span> {label}
-    </span>
-  )
-}
-
-export default function MenuItemCard({ item }) {
+export default function MenuItemCard({
+  item,
+  restaurantName,
+  isFavorite,
+  inCompare,
+  onFavorite,
+  onCompare,
+  onShare,
+}) {
   return (
     <article className="menu-item-card">
-      <h3>{item.name}</h3>
+      <div className="item-header">
+        <h3>{item.name}</h3>
+        <div className="item-actions">
+          {onShare && (
+            <button className="icon-button" title="Share dish" onClick={() => onShare(item)}>
+              ↗
+            </button>
+          )}
+          {onCompare && (
+            <button
+              className={`icon-button ${inCompare ? 'active' : ''}`}
+              title="Add to compare"
+              onClick={() => onCompare(item)}
+            >
+              ⇄
+            </button>
+          )}
+          {onFavorite && (
+            <button
+              className={`icon-button ${isFavorite ? 'favorite-active' : ''}`}
+              title="Save favorite"
+              onClick={() => onFavorite(item)}
+            >
+              ♥
+            </button>
+          )}
+        </div>
+      </div>
+
       {item.description && <p className="item-description">{item.description}</p>}
+      {restaurantName && <p className="item-restaurant">{restaurantName}</p>}
 
       <div className="nutrition-row">
-        <NutritionBadge label="cal" value={item.estimated_calories} unit="" />
-        <NutritionBadge label="protein" value={item.protein_g} unit="g" />
-        <NutritionBadge label="carbs" value={item.carbs_g} unit="g" />
-        <NutritionBadge label="sugar" value={item.sugar_g} unit="g" />
-        <NutritionBadge label="fat" value={item.fat_g} unit="g" />
+        {item.estimated_calories != null && (
+          <span className="nutrition-badge"><strong>{item.estimated_calories}</strong> cal</span>
+        )}
+        {item.protein_g != null && (
+          <span className="nutrition-badge"><strong>{item.protein_g}g</strong> protein</span>
+        )}
+        {item.carbs_g != null && (
+          <span className="nutrition-badge"><strong>{item.carbs_g}g</strong> carbs</span>
+        )}
+        {item.sugar_g != null && (
+          <span className="nutrition-badge"><strong>{item.sugar_g}g</strong> sugar</span>
+        )}
+        {item.fat_g != null && (
+          <span className="nutrition-badge"><strong>{item.fat_g}g</strong> fat</span>
+        )}
       </div>
 
       <p className="estimate-note">Estimated values</p>
@@ -27,9 +64,7 @@ export default function MenuItemCard({ item }) {
       {item.allergens?.length > 0 && (
         <div className="allergen-row">
           {item.allergens.map((a) => (
-            <span key={a} className="allergen-chip">
-              {a}
-            </span>
+            <span key={a} className="allergen-chip">{a}</span>
           ))}
         </div>
       )}
