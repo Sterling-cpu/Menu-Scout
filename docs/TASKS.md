@@ -42,11 +42,12 @@ PRD. Each task lists its acceptance criteria ("done" means all criteria pass).
 
 ### T2.1 Restaurant discovery
 - **Story:** US9 — Discover Nearby Restaurants
-- **Description:** List nearby restaurants from the `restaurants` table (initially by distance/browse; real geolocation later)
+- **Description:** List restaurants from the `restaurants` table. Currently a static seed list; future version uses the browser Geolocation API to sort/filter by distance (the table already stores `latitude`/`longitude`)
 - **Acceptance criteria:**
   - User sees a list of restaurants with name, cuisine, address
   - Tapping a restaurant shows its menu items
   - Empty state shown when no restaurants exist
+  - **Future:** request location permission, compute distance to each restaurant, sort nearest-first, show approximate distance; handle permission-denied gracefully
 
 ### T2.2 Menu item display with estimates
 - **Story:** US4 — View Recommended Dishes
