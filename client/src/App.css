@@ -11,24 +11,147 @@
 }
 
 .app-header p {
-  margin: 0.25rem 0 1.5rem;
+  margin: 0.25rem 0 1.25rem;
   color: #555;
 }
 
-.card {
+.section-title {
+  font-size: 1.05rem;
+  margin: 0 0 0.75rem;
+}
+
+.status {
+  color: #666;
+  padding: 1rem 0;
+}
+
+.status.error {
+  color: #b91c1c;
+}
+
+/* Restaurant list */
+.restaurant-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.restaurant-card {
+  width: 100%;
+  text-align: left;
   background: #fff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
-  padding: 1.25rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.restaurant-card:hover {
+  border-color: #1f6f43;
+}
+
+.restaurant-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.restaurant-meta {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+/* Menu view */
+.back-button {
+  background: none;
+  border: none;
+  color: #1f6f43;
+  font-size: 0.95rem;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
+
+.menu-title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.menu-subtitle {
+  margin: 0.2rem 0 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.menu-item-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.card h2 {
-  margin-top: 0;
-  font-size: 1.1rem;
+.menu-item-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
 }
 
-.card ul {
-  padding-left: 1.25rem;
-  color: #444;
+.item-description {
+  margin: 0 0 0.75rem;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.nutrition-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.nutrition-badge {
+  background: #eef7f1;
+  color: #14532d;
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.8rem;
+}
+
+.nutrition-unit {
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.estimate-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.72rem;
+  color: #999;
+  font-style: italic;
+}
+
+.allergen-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.allergen-chip {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.72rem;
 }

@@ -1,41 +1,70 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import RestaurantList from './components/RestaurantList'
+import MenuView from './components/MenuView'
 
 function App() {
-  const [health, setHealth] = useState(null)
+  const [restaurants, setRestaurants] = useState([])
+  const [selected, setSelected] = useState(null)
+  const [menuItems, setMenuItems] = useState([])
+  const [loadingRestaurants, setLoadingRestaurants] = useState(true)
+  const [loadingMenu, setLoadingMenu] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch('/api/health')
-      .then((res) => res.json())
-      .then(setHealth)
-      .catch(() => setHealth({ status: 'api unreachable' }))
+    fetch('/api/restaurants')
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        return res.json()
+      })
+      .then(setRestaurants)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoadingRestaurants(false))
   }, [])
+
+  useEffect(() => {
+    if (!selected) return
+    setLoadingMenu(true)
+    setError(null)
+    fetch(`/api/restaurants/${selected.id}/menu`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        return res.json()
+      })
+      .then(setMenuItems)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoadingMenu(false))
+  }, [selected])
 
   return (
     <main className="app">
       <header className="app-header">
         <h1>Menu Scout</h1>
-        <p>Eat out smarter — scan menus, know your numbers.</p>
+        <p>Eat out smarter — know the numbers before you order.</p>
       </header>
 
-      <section className="card">
-        <h2>Project scaffold</h2>
-        <p>
-          React PWA client is running. API status:{' '}
-          <strong>{health ? health.status : 'checking…'}</strong>
-        </p>
-        <ul>
-          <li>US 1 — Scan restaurant menu (planned)</li>
-          <li>US 2 — Set dietary goals in profile (planned)</li>
-          <li>US 3 — Record food allergies (planned)</li>
-          <li>US 4 — View recommended dishes (planned)</li>
-          <li>US 5 — Filter menu items (planned)</li>
-          <li>US 6 — Compare dishes side by side (planned)</li>
-          <li>US 7 — Save favorite dishes (planned)</li>
-          <li>US 8 — Share dish recommendations (planned)</li>
-          <li>US 9 — Discover nearby restaurants (planned)</li>
-        </ul>
-      </section>
+      {selected ? (
+        <MenuView
+          restaurant={selected}
+          items={menuItems}
+          loading={loadingMenu}
+          error={error}
+          onBack={() => {
+            setSelected(null)
+            setMenuItems([])
+          }}
+        />
+      ) : (
+        <>
+          <h2 className="section-title">Nearby restaurants</h2>
+          <RestaurantList
+            restaurants={restaurants}
+            onSelect={setSelected}
+            loading={loadingRestaurants}
+            error={error}
+          />
+        </>
+      )}
     </main>
   )
 }
