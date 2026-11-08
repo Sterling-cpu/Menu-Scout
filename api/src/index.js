@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
+import menuRoutes from './routes/menu.js'
 
 const app = express()
 const PORT = process.env.PORT || 4000
@@ -12,8 +13,16 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', service: 'menu-scout-api' })
 })
 
+app.use('/api', menuRoutes)
+
 app.use('/api', (_req, res) => {
   res.status(404).json({ error: 'Not found' })
+})
+
+// eslint-disable-next-line no-unused-vars
+app.use((err, _req, res, _next) => {
+  console.error(err)
+  res.status(500).json({ error: 'Internal server error' })
 })
 
 app.listen(PORT, () => {
